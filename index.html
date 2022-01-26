@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+
+    <style type="text/css">
+        html {
+            box-sizing: border-box;
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #7C99AC;
+            --secondary-color: #f2f2f2;   
+        }
+
+        .dark-theme {
+            --primary-color: #212121;
+            --secondary-color: #f2f2f2;
+        }
+
+        body {
+
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins';
+            box-sizing: border-box;
+
+        }
+
+        .container {
+
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: relative;
+
+        }
+
+        nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: var(--primary-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            z-index: 3;
+
+        }
+
+        #moon {
+            width: 3rem;
+            height: 3rem;
+            margin-right: 3rem;
+            margin-top: 1.5rem;
+            cursor: pointer;
+        }
+
+        #menu {
+            width: 3rem;
+            height: 2rem;
+            margin-right: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /*margin-right: 3rem;*/
+            /*display: flex;*/
+            flex: 1;
+            text-align: right;
+        }
+
+        li {
+            float: left;
+
+        }
+
+        li a {
+
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 1.6rem 1.6rem;
+            text-decoration: none;
+            font-size: 2rem;
+
+        }
+
+        li a:hover {
+            background-color: #000;
+        }
+
+        #welcome-section {
+
+            width: 100%;
+            height: 100vh;
+            background-color: #2E4C6D;
+            color: var(--primary-color);
+            /*margin-top: 5.2rem;*/
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: .5;
+        
+        }
+
+         #welImg {
+            
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: absolute;
+        } 
+
+        #welcomeH1 {
+            font-size: 6rem;
+            z-index: 2;
+
+        }
+
+        #welcome-section > p {
+
+            font-size: 2.5rem;
+            margin: 0;
+            font-style: italic;
+            color: #fff;
+            opacity: .6;
+            z-index: 2;
+
+        }
+
+
+        #project-section {
+
+            background-color: var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 10rem 2rem;
+
+        }
+       
+        #project-section > h2 {
+            max-width: 760px;
+            font-size: 4.5rem;
+            color: var(--primary-color);
+            margin: 0 auto 6rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        #projects-grid {
+
+            width: 100%;
+            max-width: 1280px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-gap: 4rem;
+            margin: 0 auto;
+            margin-top: 4rem;
+            margin-bottom: 0;
+            text-align: center;
+
+        }
+
+        #projects-grid > a:hover {
+            transform: scale3d(1.2, 1.2, 1.2);
+            transition: transform .3s ease-out;
+        }
+
+        .projectA {
+
+            text-decoration: none;
+            margin: 1rem;
+
+        }
+
+        img {
+
+            width: 100%;
+            height: 50vh;
+            object-fit: cover;
+            border-radius: .8rem;
+            margin: 0 auto;
+        }
+
+        .projectP {
+
+            font-size: 2rem;
+            color: var(--secondary-color);
+            background: var(--primary-color);
+            margin-top: 0;
+            padding: 1.2rem;
+            border-radius: .8rem;
+        }
+
+        .projectP:hover {
+
+            transition: color 0.3s ease-out;
+            color: #0b70f1;
+        }
+
+        .code {
+            display: none;
+        }
+
+        #contact-section {
+
+            width: 100%;
+            height: auto;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+        }
+
+        #contactH1 {
+            font-size: 6rem;
+            margin-top: 12rem;
+            margin-bottom: 0;
+        }
+
+        #contact-section > p {
+
+            font-style: italic;
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: var(--secondary-color);
+            opacity: 60%;
+        }
+
+        .contact-A {
+            display: flex;
+            float: left;
+            font-size: 2.5rem;
+            margin-top: 5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            justify-content: space-evenly;
+            line-height: 2;
+            margin-bottom: 9rem;
+        }
+
+        .contact-A > a {
+
+            text-decoration: none;
+            margin: auto 3.5rem;
+            color: var(--secondary-color);
+        }
+
+        .contact-bttn-A:hover {
+
+            color: #0b70f1;
+            transition: transform 0.5s ease;
+            transform: translateY(.8rem);
+        }
+
+        
+        footer {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+            margin-top: 0;
+            border-top: .35rem solid #0b70f1;
+
+        }
+
+        footer > p {
+
+            margin-top: 4rem;
+        }
+
+        /* 1200px / 16px = 75em */
+        @media (max-width: 75em) {
+
+          html {
+            font-size: 60%;
+          }
+        }
+
+        /* 980px / 16px = 61.25em */
+        @media (max-width: 61.25em) {
+          html {
+            font-size: 58%;
+          }
+        }
+
+        /* 460px / 16px = 28.75em */
+        @media (max-width: 28.75em) {
+          html {
+            font-size: 55%;
+          }
+        }
+
+        @media (max-width: 28.75em) {
+          nav {
+            justify-content: center;
+          }
+         }
+
+        
+        @media (max-width: 28.75em) {
+          #welcomeH1 {
+            font-size: 4rem;
+          }
+
+        } 
+
+
+        @media (max-width: 28.75em) {
+          #project-section > h2 {
+            font-size: 4rem;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 30.625em) {
+          #project-section {
+            padding: 6rem 1rem;
+          }
+
+          #projects-grid {
+            grid-template-columns: 1fr;
+          }
+        } 
+
+        @media (max-width: 28.75em) {
+          #contactH1 {
+            font-size: 4rem;
+          }
+        } 
+
+       
+        @media (max-width: 28.75em) {
+          footer {
+            flex-direction: column;
+            text-align: center;
+
+          }
+        }
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav>
+
+
+            <ul id="menuList">
+                <li>
+                    <a href="#welcome-section">About</a>
+                </li>
+                <li>
+                    <a href="#project-section">Work</a>
+                </li>
+                <li>
+                    <a href="#contact-section">Contact</a>
+                </li>
+            </ul>
+
+            <img src="icons/Icon feather-menu (1).svg" id="menu">
+
+            <img src="dark theme icon/moon.png" id="moon">
+
+        </nav>
+
+
+        <section id="welcome-section">
+
+            <h1 id="welcomeH1">Hey, I am Avilash</h1>
+
+            <p>a front-end developer</p>
+
+            <!-- <img id="welImg" src="bgImage/cesar-couto-TIvFLeqZ4ec-unsplash.jpg"></img> -->
+
+        </section>
+
+        <section id="project-section">
+
+            <h2>These are some of my projects</h2>
+
+            <div id="projects-grid">
+
+                <a href="https://elastic-goodall-89ab1a.netlify.app/" target="blank" class="projectA">
+                    <img
+                        src="https://www.pmindia.gov.in/wp-content/uploads/2021/12/H20211206105749-e1638859394594.jpeg">
+                    <p class="projectP">
+                        <span class="code">
+                            <</span>
+                                Tribute Page Responsive 
+                                <span class="code">/></span>
+                    </p>
+                </a>
+
+                <a href="https://thirsty-euler-a5006e.netlify.app/" target="blank" class="projectA">
+                    <img
+                        src="bgImage/mokup_suggestion.png">
+                    <p class="projectP">
+                        <span class="code">
+                            <</span>
+                                Static Webpage
+                                <span class="code">/></span>
+                    </p>
+                </a>
+
+                <a href="https://keen-noether-a14f13.netlify.app/" target="blank" class="projectA">
+                    <img
+                        src="bgImage/Desert.jpg">
+                    <p class="projectP">
+                        <span class="code">
+                            <</span>
+                                jQuery Banner-Slideshow
+                                <span class="code">/></span>
+                    </p>
+                </a>
+
+                <a href="https://musing-meitner-cd6689.netlify.app/" target="blank" class="projectA">
+                    <img
+                        src="bgImage/Penguins.jpg">
+                    <p class="projectP">
+                        <span class="code">
+                            <</span>
+                                jQuery Change-Thumbnail
+                                <span class="code">/></span>
+                    </p>
+                </a>
+
+                <a href="https://admiring-villani-560468.netlify.app/" target="blank" class="projectA">
+                    <img
+                        src="bgImage/Capture.jpg">
+                    <p class="projectP">
+                        <span class="code">
+                            <</span>
+                                jQuery Searchable Table
+                                <span class="code">/></span>
+                    </p>
+                </a>
+
+                <a href="https://zealous-wilson-91b994.netlify.app/" target="blank" class="projectA">
+                    <img
+                        src="bgImage/Calculator.jpg">
+                    <p class="projectP">
+                        <span class="code">
+                            <</span>
+                                JS Calculator
+                                <span class="code">/></span>
+                    </p>
+                </a>
+
+
+
+
+
+            </div>
+
+        </section>
+
+        <section id="contact-section">
+
+            <h1 id="contactH1">Let's work together...</h1>
+
+            <p>How do you take your coffee?</p>
+
+            <div class="contact-A">
+
+                <a href="https://drive.google.com/file/d/1Oe-H9YgI2funf_rLFwm1gNLO4NM_yl7u/view"
+                    target="_blank" class="contact-bttn-A">
+                    <embed src="icons/Group 2.svg"></embed>
+                    Resume
+                </a>
+
+                <a href="https://www.linkedin.com/in/avilash-chakraborty-a40928161/" target="_blank"
+                    class="contact-bttn-A">
+                    <embed src="icons/Icon awesome-linkedin-in.svg"></embed>
+                    LinkedIn
+                </a>
+
+                <a href="https://github.com/AvilashChak" target="_blank" class="contact-bttn-A">
+                    <embed src="icons/Icon awesome-github.svg"></embed>
+                    GitHub
+                </a>
+
+                <a href="#" class="contact-bttn-A">
+                    <embed src="icons/Group 3.svg"></embed>
+                    avilashchak@gmail.com
+                </a>
+
+                <a href="#" class="contact-bttn-A">
+                    <embed src="icons/Group 4.svg"></embed>
+                    9101137758
+                </a>
+
+
+            </div>
+
+
+
+        </section>
+
+        <footer>
+
+            <p>&copy; Created by Avilash Chakraborty</p>
+
+        </footer>
+
+
+
+    </div>
+
+    <script>
+
+        const icon = document.getElementById("moon");
+
+        icon.onclick = () => {
+            document.body.classList.toggle("dark-theme");
+            
+            if(document.body.classList.contains("dark-theme")) {
+                icon.src = "dark theme icon/sun.png";
+            } else {
+                icon.src = "dark theme icon/moon.png"
+            }
+        };
+
+
+    </script>
+
+
+</body>
+
+</html>
